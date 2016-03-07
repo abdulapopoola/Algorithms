@@ -1,37 +1,41 @@
-function Tree(val, parent) {
+function Node(val, parent) {
     this.parent = parent || null;
     this.val = val || null;
     this.leftChild = null;
     this.rightChild = null;
 }
 
-function createCartesianTree(entries /*array*/){
-    var listCopy = new Array(entries);
-    
+function createCartesianTree(entries /*array*/ ) {
+    var listCopy = entries.slice();
+
     var firstEntry = listCopy.shift();
-    var tree = new Tree(firstEntry);
-    var lastSeenNode = tree;
-    
-    while(listCopy.length){
-        var entry = listCopy.shift();
-        if(entry > lastSeenNode.val){
-            lastSeenNode.rightChild = new Tree(entry, lastSeenNode);
-        } else {
-            var parent = lastSeenNode.parent;
-            while(parent && parent.val <= entry){
-                parent = parent.parent;
-            }
-            if(parent && parent.parent){
-                var newNode = new Tree(entry, parent);
-                var parentRightChild = parent.rightChild;
-                parent.rightChild = newNode;
-                newNode.leftChild = parentRightChild;
-            } else {
-                var newNode = new Tree(entry, null);
-                newNode.leftChild = parent;
-            }
+    var root = new Node(firstEntry, null);
+    var lastSeenNode = root;
+
+    for (var i = 0, len = listCopy.length; i < len; i++) {
+        var entry = listCopy[i];
+        var newNode = new Node(entry);
+
+        while (lastSeenNode.val > entry && lastSeenNode.parent != null) {
+            lastSeenNode = lastSeenNode.parent;
         }
-    }    
+        if (lastSeenNode.val > entry) {
+            lastSeenNode.parent = newNode;
+            newNode.leftChild = lastSeenNode;
+        } else if (lastSeenNode.rightChild == null){
+            newNode.parent = lastSeenNode;
+            lastSeenNode.rightChild = newNode;
+        } else {
+            var tmp = lastSeenNode.rightChild;
+            lastSeenNode.rightChild = newNode;
+            lastSeenNode.leftChild = tmp;
+            newNode.parent = lastSeenNode;
+        }
+
+        lastSeenNode = newNode;
+    }
+    
+    return root;
 }
 
-createCartesianTree([9,3,7,1,8,12,10,20,15,18,5]);
+createCartesianTree([9, 3, 7, 1, 8, 12, 10, 20, 15, 18, 5]);
