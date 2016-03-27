@@ -1,14 +1,27 @@
 'use strict';
 
-var node = require('./treeNode.js');
+var Node = require('./treeNode.js');
 var inherits = require('../Utils/utils.js');
 
-var binarySearchTree = function() {};
-inherits(binarySearchTree, node);
+var binarySearchTree = function () {
+    this.root = new Node();
+};
+inherits(binarySearchTree, Node);
 
 binarySearchTree.prototype = {
-    insert: function(val) {
-        
+    insert: function (val) {
+        // check if is root? How is it root? If parent is null; set value and return
+        // Otherwise, left and right child
+        // CONTINUE
+        var node = this.root;
+        while (node.val) {
+            if(val > node.val){
+                node = node.rightChild;
+            } else {
+                node = node.leftChild;
+            }
+        }
+
     },
     remove: '',
     contains: ''
