@@ -31,28 +31,9 @@ class Trie {
     }
 
     addNode(node, word) {
-        if (this.ensureParams(node, word)) {
-            node.prefixes++;
-            const char = word.charAt(0);
-            let child = node.children[char];
-            if (!child) {
-                child = new Node(char);
-                node.children[char] = child;
-            }
-            const remainder = word.slice(1);
-            if (!remainder) {
-                child.isWord = true;
-            }
-
-            this.addNode(child, remainder);
-        }
-    }
-
-    removeNode(node, word) {
-        if (!node || !word) {
+        if (!this.ensureParams(node, word)) {
             return null;
         }
-
         node.prefixes++;
         const char = word.charAt(0);
         let child = node.children[char];
@@ -65,11 +46,48 @@ class Trie {
             child.isWord = true;
         }
 
-        this.removeNode(child, remainder);
+        this.addNode(child, remainder);
+    }
+
+    removeNode(node, word) {
+        if (!this.ensureParams(node, word)) {
+            return;
+        }
+
+        node.prefixes--;
+        const char = word.charAt(0);
+        let child = node.children[word[0]];
+        if (!child) {
+            return;
+        }
+        const remainder = word.slice(1);
+        if (remainder) {
+            this.removeNode(child, remainder);
+        }
+        
+        if(child.prefixes){
+            child.isWord = false;
+        } else {
+            delete node.children[word[0]];
+        }
     }
 
     containsWord(node, word) {
+        if (!this.ensureParams(node, word)) {
+            return false;
+        }
 
+        let child = node.children[word[0]];
+        if (!child) {
+            return false;
+        }
+
+        const remainder = word.slice(1);
+        if(remainder){
+            return this.containsWord(child, remainder);
+        }
+        
+        return child.isWord;
     }
 
     isValid() {
