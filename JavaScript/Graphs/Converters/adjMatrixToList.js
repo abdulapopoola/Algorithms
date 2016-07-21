@@ -1,8 +1,4 @@
 function converter(matrix) {
-    //array of n by n values
-    //take each element array
-    //go through array; if it is a 1, then push index into edge array
-    //
     var verticesLen = matrix.length;
     var adjacencyList = {};
     for (var i = 0; i < verticesLen; i++) {
