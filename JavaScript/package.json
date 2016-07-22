@@ -1,0 +1,36 @@
+{
+  "name": "js-algorithms",
+  "version": "1.0.0",
+  "description": "Implementation of various algorithms in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdulapopoola/Algorithms.git"
+  },
+  "keywords": [
+    "algorithms",
+    "javascript"
+  ],
+  "author": "abdulapopoola",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abdulapopoola/Descrambler/issues"
+  },
+  "homepage": "https://github.com/abdulapopoola/Descrambler#readme",
+  "devDependencies": {
+    "jshint": "^2.9.2",
+    "browserify": "^13.0.1",
+    "jasmine-core": "^2.4.1",
+    "jscs": "^3.0.3",
+    "karma": "^0.13.22",
+    "karma-browserify": "^5.0.5",
+    "karma-jasmine": "^1.0.2",
+    "karma-jshint-preprocessor": "0.0.6",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "phantomjs-prebuilt": "^2.1.7",
+    "watchify": "^3.7.0"
+  }
+}

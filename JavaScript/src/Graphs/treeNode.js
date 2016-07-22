@@ -5,6 +5,6 @@ var Node = function(val, parent) {
     this.val = val || null;
     this.leftChild = null;
     this.rightChild = null;
-}
+};
 
 module.exports = Node;
