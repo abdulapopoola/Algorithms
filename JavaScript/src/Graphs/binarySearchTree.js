@@ -15,7 +15,7 @@ binarySearchTree.prototype = {
         // CONTINUE
         var node = this.root;
         while (node.val) {
-            if(val > node.val){
+            if (val > node.val) {
                 node = node.rightChild;
             } else {
                 node = node.leftChild;

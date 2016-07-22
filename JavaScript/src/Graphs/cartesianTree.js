@@ -1,4 +1,4 @@
-function createCartesianTree(entries /*array*/ ) {
+function createCartesianTree(entries /*array*/) {
     var listCopy = entries.slice();
 
     var firstEntry = listCopy.shift();
