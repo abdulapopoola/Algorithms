@@ -1,13 +1,17 @@
+'use strict';
+
+var TreeNode = require('../Common/treeNode');
+
 function createCartesianTree(entries /*array*/) {
     var listCopy = entries.slice();
 
     var firstEntry = listCopy.shift();
-    var root = new Node(firstEntry, null);
+    var root = new TreeNode(firstEntry, null);
     var lastProcessedNode = root;
 
     for (var i = 0, len = listCopy.length; i < len; i++) {
         var entry = listCopy[i];
-        var newNode = new Node(entry);
+        var newNode = new TreeNode(entry);
 
         while (lastProcessedNode.val > entry && lastProcessedNode.parent) {
             lastProcessedNode = lastProcessedNode.parent;
