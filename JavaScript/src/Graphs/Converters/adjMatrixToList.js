@@ -1,4 +1,6 @@
-function converter(matrix) {
+'use strict';
+
+function adjMatrixToList(matrix) {
     var verticesLen = matrix.length;
     var adjacencyList = {};
     for (var i = 0; i < verticesLen; i++) {
@@ -15,3 +17,4 @@ function converter(matrix) {
     return adjacencyList;
 }
 
+module.exports = adjMatrixToList;
