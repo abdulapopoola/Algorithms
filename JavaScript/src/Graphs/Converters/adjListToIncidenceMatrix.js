@@ -1,15 +1,15 @@
 'use strict';
 
-function adjListToIncidenceMatrix(matrix) {
-    var vertices = Object.keys(matrix);
-    var matrixLen = vertices.length;
+function adjListToIncidenceMatrix(adjList) {
+    var vertices = Object.keys(adjList);
+    var verticesCount = vertices.length;
     var edgesMap = {};
     var incidentMatrix = [];
     var edgeCounter = 0;
-    for (var i = 0; i < matrixLen; i++) {
+    for (var i = 0; i < verticesCount; i++) {
         var vertix = vertices[i];
-        var edgeList = matrix[vertix];
-        var edgeMatrix = Array.apply(null, new Array(matrixLen)).map(Number.prototype.valueOf, 0);
+        var edgeList = adjList[vertix];
+        var edgeMatrix = Array.apply(null, new Array(verticesCount)).map(Number.prototype.valueOf, 0);
         for (var j = 0, len = edgeList.length; j < len; j++) {
             var edgeKey = getEdgeKey(vertix, edgeList[j]);
             var edgeNumber = edgesMap[edgeKey];
