@@ -5,26 +5,33 @@ function incidenceMatrixToAdjList(matrix) {
     //every 1 you see; add entry into edge list
     //optimize by stopping after second one since edge only has two vertices
     //add opposing edges into edge list
-    var edgeCount = matrix[0].length;
     var vertixCount = matrix.length;
+    var edgeCount = matrix[0].length;
     var adjList = {};
+
     for (var i = 0; i < edgeCount; i++) {
-        var edgeVerticesFound = 0;
-        var edgeVertices = [];
+        var foundEdges = [];
         for (var j = 0; j < vertixCount; j++) {
-            if (matrix[i][j]) {
-                edgeVertices.push(j);
-                edgeVerticesFound++;
-                if (edgeVerticesFound === 2) {
-                    break;
-                }
+            var hasEdge = matrix[j][i];
+            if (hasEdge) {
+                foundEdges.push(j);
+            }
+            if (foundEdges.length === 2) {
+                break;
             }
         }
-        var vertix0 = edgeVertices[0];
-        var vertix1 = edgeVertices[1];
-        adjList[vertix0] = (adjList[vertix0] || []).push(vertix1);
-        adjList[vertix1] = (adjList[vertix1] || []).push(vertix0);
+
+        var vertix0 = foundEdges[0];
+        var vertix1 = foundEdges[1];
+
+        adjList[vertix0] = adjList[vertix0] || [];
+        adjList[vertix1] = adjList[vertix1] || [];
+
+        adjList[vertix0].push(vertix1);
+        adjList[vertix1].push(vertix0);
     }
+
+    return adjList;
 }
 
 module.exports = incidenceMatrixToAdjList;
