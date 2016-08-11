@@ -5,4 +5,11 @@ var inherits = function (child, parent) {
     child.prototype.constructor = child;
 };
 
-module.exports = inherits;
+var isNumber = function(val) {
+    return !isNaN(parseFloat(val)) && isFinite(val);
+};
+
+module.exports = {
+    inherits: inherits,
+    isNumber: isNumber
+};
