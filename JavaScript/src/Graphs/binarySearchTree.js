@@ -1,7 +1,7 @@
 'use strict';
 
 var TreeNode = require('../Common/treeNode.js');
-var inherits = require('../Common/utils.js');
+var inherits = require('../Common/utils.js').inherits;
 
 var binarySearchTree = function () {
     this.root = new TreeNode();

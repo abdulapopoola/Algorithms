@@ -1,19 +1,30 @@
 'use strict';
 
-var Node = require('../Common/treeNode');
+var treeNode = require('../Common/treeNode');
 var isNumber = require('../Common/utils').isNumber;
 
 var symbols = ['*', '/', '+', '-'];
 
-function Evaluator(tree) {
+function evaluate(tree) {
     var treeVal = tree.val;
     if (isNumber(treeVal)) {
         return treeVal;
     }
 
-    //handle scenario for tree and do the right operation
+    var left = evaluate(tree.left);
+    var right = evaluate(tree.right);
 
-
+    var result;
+    switch (treeVal) {
+        case '*':
+            return left * right;
+        case '+':
+            return left + right;
+        case '-':
+            return left - right;
+        case '/':
+            return left / right;
+    }
 }
 
-module.exports = Evaluator;
+module.exports = evaluate;
