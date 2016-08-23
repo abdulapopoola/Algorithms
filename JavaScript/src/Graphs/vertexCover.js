@@ -1,10 +1,6 @@
 'use strict';
 
 function vertexCover(graph) {
-    //start from each vertex
-    // remove all vertices it is linked to 
-    //if no more vertices, return set
-    //append to list
     var vertices = Object.keys(graph);
     var vertexCount = vertices.length;
     var visited = new Array(vertexCount);
