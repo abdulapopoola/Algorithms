@@ -12,6 +12,6 @@ describe('vertexCover', function () {
             4: [0]
         };
 
-        expect(vertexCover(graph)).toEqual([0]);
+        expect(vertexCover(graph)).toEqual([0, 1]);
     });
 });

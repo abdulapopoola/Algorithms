@@ -10,23 +10,21 @@ function vertexCover(graph) {
             var linkedVertices = graph[i];
             var linkedVerticesCount = linkedVertices.length;
             for (var j = 0; j < linkedVerticesCount; j++) {
-                if (!visited[j]) {
+                var edgeEndpoint = linkedVertices[j];
+                if (!visited[edgeEndpoint]) {
                     visited[i] = true;
-                    visited[j] = true;
+                    visited[edgeEndpoint] = true;
                     break;
                 }
             }
         }
     }
 
-    var cover = [];
-    for (var i = 0; i < visited.length; i++) {
-        if (visited[i]) {
-            cover.push(i);
-        }
-    }
-
-    return cover;
+    return visited.map(function (val, i) {
+        return i;
+    }).filter(function (val) {
+        return val != null;
+    });
 }
 
 module.exports = vertexCover;
