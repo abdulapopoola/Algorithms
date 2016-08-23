@@ -2,7 +2,7 @@
 
 var converter = require('../src/Graphs/Converters/incidenceMatrixToAdjList');
 
-describe('Utils', function () {
+describe('incidenceMatrixToAdjList', function () {
     it('should convert incidence matrix to  adjacency list', function () {
         var list = [
             [1, 1, 0, 0],

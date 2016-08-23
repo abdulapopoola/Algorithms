@@ -1,10 +1,17 @@
 'use strict';
 
-var TreeNode = require('../src/Common/treeNode');
-var evaluate = require('../src/Graphs/vertexCover');
+var vertexCover = require('../src/Graphs/vertexCover');
 
-describe('VertexCover', function () {
-    it('should calculate the vertexCover', function () {
-        expect(false).toEqual(true);
+describe('vertexCover', function () {
+    it('should find the vertexCover', function () {
+        var graph = {
+            0: [1, 2, 3, 4],
+            1: [0],
+            2: [0],
+            3: [0],
+            4: [0]
+        };
+
+        expect(vertexCover(graph)).toEqual([0]);
     });
 });
