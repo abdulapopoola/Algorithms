@@ -1,6 +1,6 @@
 'use strict';
 
-function vertexCover(graph) {
+function vertexCover(graph, collapse) {
     var vertices = Object.keys(graph);
     var vertexCount = vertices.length;
     var visited = new Array(vertexCount);
@@ -20,11 +20,21 @@ function vertexCover(graph) {
         }
     }
 
-    return visited.map(function (val, i) {
-        return i;
-    }).filter(function (val) {
-        return val != null;
-    });
+    var coverVertices = visited.reduce(function (prev, curr, index) {
+        prev[index] = true;
+        return prev;
+    }, {});
+
+    if (collapse) {
+        var collapsedVertices = [];
+        var 
+
+        //find all covered vertices
+        //for each edge; check if its vertices are already covered by an endpoint
+        //remove the redundant endpoint
+    }
+
+    return Object.keys(coverVertices).map(Number);
 }
 
 module.exports = vertexCover;
