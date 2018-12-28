@@ -5,7 +5,7 @@ function rotate_list(head, n) {
   
   let len = length(head);  
   let rotation = rotationCount(len, n);
-  if(!rotationCount) {
+  if(!rotation) {
       return head;
   }
 
